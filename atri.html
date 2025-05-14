@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atri</title>
+    <link rel="stylesheet" href="css/atri.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <script src="navbarClick.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h1 class="navTitle">忘れられない夏が始まる――</h1>
+        <ul class="nav-links">
+            <li><a href="music library.html">Main</a></li>
+            <li><a href="atriSceneChange.html" id="atri">Atri</a></li>
+            <li><a href="#">Sakura no Uta</a></li>
+            <li><a href="#">Wonderful everyday</a></li>
+        </ul>
+        <div class="audio-control" onclick="toggleAudio()">
+            <img id="soundOn" src="pic/btn_sound_on.png" alt="Sound On">
+            <img id="soundOff" src="pic/btn_sound_off.png" alt="Sound Off">
+        </div>
+    </nav>
+
+    <div id="blue-circle"></div>
+
+    <audio id="bgAudio" class="background-audio" loop>
+        <source src="audio/atri  audio/松本文紀 - 凪.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="background"><span>Atri</span></div>
+
+    <div class="shell-container">
+        <div class="buffer">
+            <div id="v-line"></div>
+            <p id="buffer-p1" class="text">
+                MY DEAR MOMENTS
+            </p>
+            <p id="buffer-p2" class="text">
+                WITH YOU
+            </p>
+        </div>
+        <div class="shell">
+            <div class="box">
+                <img src="pic/atri_cg/ev003el.png" alt="Atri">
+                <span>Atri</span>
+            </div>
+            <div class="box">
+                <img src="pic/atri_cg/ev000al.jpg" alt="Atri">
+                <span>Atri</span>
+            </div>
+            <div class="box">
+                <img src="pic/atri_cg/ev002al.png" alt="Atri">
+                <span>Atri</span>
+            </div>
+            <div class="box">
+                <img src="pic/atri_cg/ev018al.png" alt="Atri">
+                <span>Atri</span>
+            </div>
+            <div class="box">
+                <img src="pic/atri_cg/ev007bl.png" alt="Atri">
+                <span>Atri</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // audio control
+        const audio = document.getElementById('bgAudio');
+        const soundOn = document.getElementById('soundOn');
+        const soundOff = document.getElementById('soundOff');
+        let isPlaying = true;
+
+        // Set initial state
+        audio.muted = false;
+        audio.play();
+        updateSoundIcon();
+
+            function toggleAudio() {
+                if (isPlaying) {
+                    audio.muted = true;
+                    audio.pause();
+                    isPlaying = false;
+                } else {
+                    audio.muted = false;
+                    isPlaying = true;
+                    audio.play();
+                }
+                updateSoundIcon();
+            }
+
+            // update the soundOn/Off img
+            function updateSoundIcon() {
+                if (isPlaying) {
+                    soundOn.style.display = 'block';
+                    soundOff.style.display = 'none';
+                } else {
+                    soundOn.style.display = 'none';
+                    soundOff.style.display = 'block';
+                }
+            }
+
+        const background = document.querySelector('.background');
+        
+        // parallax for background
+        document.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            if(scrollPosition !== 0) {
+                background.style.backgroundPosition = `calc(50% + ${scrollPosition}px) calc(50% + ${scrollPosition}px)`;
+            } else {
+                background.style.backgroundPosition = '';
+            }
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const vLine = document.getElementById("v-line");
+
+        const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+            vLine.classList.add("grow");
+            }
+        },
+        { threshold: 0.1 }
+        );
+
+        observer.observe(vLine);
+        });
+
+        const songList = [
+            {
+                name: "凪",
+                src: "audio/atri audio/松本文紀 - 凪.mp3"
+            },
+            {
+                name: "海中都市",
+                src: "audio/atri audio/松本文紀 - 海中都市.mp3"
+            },
+            {
+                name: "黄昏期の風景",
+                src: "audio/atri audio/松本文紀 - 黄昏期の風景"
+            },
+            {
+                name: "暖かな時間",
+                src: "audio/atri audio/松本文紀 - 暖かな時間"
+            },
+            {
+                name: "親愛なるあの日々へ",
+                src: "audio/atri audio/松本文紀 - 親愛なるあの日々へ"
+            },
+            {
+                name: "Dear Moments",
+                src: "audio/atri audio/松本文紀 -赤尾ひかる - Dear Moments (挚爱的时光)"
+            },
+            {
+                name: "光放て!",
+                src: "audio/atri audio/松本文紀 -柳麻美 - 光放て! (释放光芒!)"
+            }
+        ];
+
+    
+
+    </script>
+
+</body>
+
+</html>
+
+
