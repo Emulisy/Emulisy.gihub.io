@@ -1,0 +1,171 @@
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    z-index: 9999;
+    animation: fadeOut 2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+}
+
+.background {
+    position: relative;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 100%;
+    background-image: url(../pic/atri_cg/background.jpg);
+    font: 900 25em '';
+    overflow: hidden;
+    text-align: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -99;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: inherit;
+}
+
+.shell-container {
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(143, 217, 245);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#v-line{
+    height: 0;
+    width: 1px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 23%;
+    left: 50%;
+}
+
+
+#v-line.grow{
+    animation: growDown 1s ease-out forwards;
+}
+
+@keyframes growDown {
+    from {
+        height: 0;
+    }
+    to {
+        height: 13%;
+    }
+}
+
+#buffer-p1{
+    position: absolute;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+#buffer-p2{
+    position: absolute;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    top: 41%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.shell{
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    width: 70%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.box{
+    flex: 1;
+    overflow: hidden;
+    transition: .5s;
+    margin: 0 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+}
+
+.box>img{
+    width: 200%;
+    height: 85%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.box>span{
+    font: 200 20px 'YakuHanJP, noto-sans-cjk-jp, "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, Meiryo, Verdana, sans-serif';
+    text-align: center;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(82, 163, 221)
+}
+
+.box:hover{
+    flex-basis: 50%;
+}
+
+.box:hover>img{
+    width: 100%;
+    height: 100%;
+}
+
+::webkit-scrollbar{
+    display: none;
+}
+
